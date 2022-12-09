@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="screen-orientation" content="portrait">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <title>抽選アプリ</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/wall.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+    <div id="main" class="wall">
+        <div class="result-btn">
+            <a href="./result.html" target="_blank" class="pure-button button-warning"
+                style="background-color: rgb(202, 60, 60)">当選リスト</a>
+        </div>
+        <button class="pure-button button-warning custome" onclick="reset()">リセット</button>
+    </div>
+    <div id="result" class="result">
+    </div>
+    <div id="tools" class="tools">
+        <div class="title" v-if="titleActive" v-cloak>
+            {{this.selected}}
+        </div>
+        <div class="prizenum_box" style="margin-bottom: 10px">
+            <!-- <label style="color: #fff">抽奖场次：</label>
+            <input v-model="lotteryName" style="width: 150px;"> -->
+            <label style="color: #fff">当選人数：</label>
+            <input type="number" v-model="prizeNum" style="width: 150x;">
+        </div>
+        <button v-for="value in btns" @click="onClick(value)" class="pure-button"
+            :class="{ 'button-error': selected == value}">{{value}}
+        </button>
+        <button class="pure-button" @click="toggle" :class="{'button-secondary': !running,
+               'button-success': running}">{{running?'STOP':'START'}}</button>
+        <button class="pure-button button-export" @click="exportData" v-show='titleActive'>Export</button>
+    </div>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/tagcanvas.js"></script>
+    <script type="text/javascript" src="js/member.js"></script>
+    <script type="text/javascript" src="js/lottery.js"></script>
+</body>
+
+</html>
